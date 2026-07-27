@@ -46,7 +46,7 @@ jobs:
           SERVER_USER: ${{ secrets.SERVER_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          rsync -az --delete --no-owner --no-group --no-perms \
+          rsync -az --delete --no-owner --no-group --no-perms --no-times --omit-dir-times \
             --exclude '.env' --exclude '.git' --exclude 'node_modules' \
             --exclude 'work' --exclude 'outputs' \
             -e 'ssh -i ~/.ssh/id_ed25519' ./ "$SERVER_USER@$SERVER_HOST:$DEPLOY_PATH/"
