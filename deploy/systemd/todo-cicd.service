@@ -1,0 +1,22 @@
+[Unit]
+Description=To-Do List Express application
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=todoapp
+Group=todoapp
+WorkingDirectory=/var/www/todo-cicd
+EnvironmentFile=/var/www/todo-cicd/.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node src/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/www/todo-cicd
+
+[Install]
+WantedBy=multi-user.target

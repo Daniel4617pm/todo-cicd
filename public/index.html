@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aplicación de gestión de tareas" />
+    <title>Mis tareas</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <p class="eyebrow">ORGANIZACIÓN PERSONAL</p>
+        <h1>Mis tareas</h1>
+        <p class="subtitle">Planifica, completa y mantén el foco.</p>
+      </header>
+
+      <section class="card" aria-label="Gestor de tareas">
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="new-task">Nueva tarea</label>
+          <input id="new-task" name="title" maxlength="200" placeholder="¿Qué necesitas hacer?" autocomplete="off" required />
+          <button type="submit">Agregar</button>
+        </form>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="sr-only">Filtrar tareas</span>
+            <input id="filter" type="search" placeholder="Filtrar tareas..." autocomplete="off" />
+          </label>
+          <span id="task-count" aria-live="polite"></span>
+        </div>
+
+        <p id="message" class="message" role="alert" hidden></p>
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty-state" hidden>No hay tareas que mostrar.</p>
+      </section>
+    </main>
+    <template id="task-template">
+      <li class="task-item">
+        <input class="toggle" type="checkbox" aria-label="Marcar tarea como completada" />
+        <span class="task-title"></span>
+        <div class="task-actions">
+          <button class="edit" type="button">Editar</button>
+          <button class="delete" type="button">Eliminar</button>
+        </div>
+      </li>
+    </template>
+    <script src="/app.js"></script>
+  </body>
+</html>
